@@ -28,3 +28,26 @@ unsigned unsigned_high_prod(unsigned x, unsigned y)
         int result = signed_high_prod(x, y) + x * y_highest_bit + y * x_highest_bit;
         return result;
 }
+
+/*#include <stdio.h>
+#include <stdbool.h>
+*int signed_high_prod(int x,int y)
+*{
+*        unsigned long long z=(unsigned long long)(unsigned)x*y;
+*        return z>>32;
+*}
+*unsigned unsigned_high_prod(unsigned x,unsigned y)
+*{
+*        size_t w=sizeof(int)<<3;
+*        unsigned xf=(int)x>>w-1;
+*        unsigned yf=(int)y>>w-1;
+*        return xf&y+yf&x+((xf&yf)>>w-1);
+*}
+*int main()
+*{
+*        unsigned int x=0,y=0;
+*        scanf("%d %d",&x,&y);
+*        printf("%d",unsigned_high_prod(x,y));
+*        return 0;
+*}               ps：不能使用乘法
+*/
